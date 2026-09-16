@@ -63,6 +63,6 @@ def main():
 
 
 if __name__ == "__main__":
-    print("=== Garden Security System ===")
+    print("=== Garden Plant Types ===")
     main()
     print("=== End of Program ===")
