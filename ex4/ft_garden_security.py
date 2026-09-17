@@ -1,33 +1,32 @@
 class Plant():
-    def __init__(self, name: str, _height: float, _age: int):
+    def __init__(self, name: str, _height: float, _age_in_days: int):
         self.name = name
         self._height = _height
-        self._age = _age
-        self.grow_speed = round(_height / _age, 1)
-        self.growth = 0
-        self.show_creation()
+        self._age_in_days = _age_in_days
+        self.grow_speed = self.get_grow_speed()
+        self.growth: float = 0
 
-    def show(self):
-        print(f"{self.name}: {self._height} cm, {self._age} days old")
+    def show(self) -> None:
+        print(f"{self.name}: {self._height} cm, {self._age_in_days} days old")
 
-    def show_creation(self):
-        print("Plant created: ", end="")
-        self.show()
+    def get_grow_speed(self) -> float:
+        grow_speed: float = 0.8
+        if self._age_in_days > 0 and self._height > 0:
+            grow_speed = round(self._height / self._age_in_days, 1)
+        return grow_speed
 
-    def show_current_state(self):
-        print("Current state: ", end="")
-        self.show()
-
-    def grow(self):
+    def grow(self) -> None:
         self._height = round(self._height + self.grow_speed, 1)
         self.growth = round(self.growth + self.grow_speed, 1)
-        self._age += 1
+
+    def age(self) -> None:
+        self._age_in_days += 1
 
     def get_height(self) -> float:
         return self._height
 
     def get_age(self) -> int:
-        return self._age
+        return self._age_in_days
 
     def set_height(self, new_height: float) -> None:
         if new_height < 0:
@@ -35,17 +34,15 @@ class Plant():
             print("Height update rejected")
         else:
             self._height = new_height
-            print(f"{self.name}: Success, height updated {new_height}")
-        self.show_current_state()
+            print(f"{self.name}: Height updated: {new_height}")
 
     def set_age(self, new_age: int) -> None:
         if new_age < 0:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self._age = new_age
-            print(f"{self.name}: Success, age updated {new_age}")
-        self.show_current_state()
+            self._age_in_days = new_age
+            print(f"{self.name}: Age updated: {new_age}")
 
 
 def simulate_week(plant: Plant):
@@ -57,9 +54,18 @@ def simulate_week(plant: Plant):
 
 
 def main():
-    rosa = Plant("Rosa", 25.0, 30)
-    rosa.set_age(5)
-    rosa.show_current_state()
+    rosa = Plant("Rosa", 15.0, 10)
+    print("Plant created: ", end="")
+    rosa.show()
+    print()
+    rosa.set_height(25.0)
+    rosa.set_age(30)
+    print()
+    rosa.set_height(-5)
+    rosa.set_age(-5)
+    print()
+    print("Current state: ", end="")
+    rosa.show()
 
 
 if __name__ == "__main__":

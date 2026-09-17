@@ -1,6 +1,6 @@
 class Plant():
     def __init__(self, name: str, height: int, age: int):
-        self.name = name
+        self.name = name.capitalize()
         self.height = height
         self.age = age
 
@@ -9,9 +9,9 @@ class Plant():
 
 
 def main() -> None:
-    rosa = Plant("Rosa", 25, 30)
-    sunflower = Plant("Sunflower", 80, 45)
-    cactus = Plant("Cactus", 15, 120)
+    rosa = Plant("rosa", 25, 30)
+    sunflower = Plant("sunflower", 80, 45)
+    cactus = Plant("cactus", 15, 120)
     rosa.show()
     sunflower.show()
     cactus.show()
