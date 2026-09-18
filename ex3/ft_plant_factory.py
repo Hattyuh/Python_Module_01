@@ -1,13 +1,14 @@
 class Plant():
     def __init__(self, name: str, height: float, age_in_days: int):
-        self.name = name
+        self.name = name.capitalize()
         self.height = height
         self.age_in_days = age_in_days
         self.grow_speed = self.get_grow_speed()
         self.growth: float = 0
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height} cm, {self.age_in_days} days old")
+        print(f"{self.name}: {self.height:.1f}cm, \
+        {self.age_in_days} days old")
 
     def get_grow_speed(self) -> float:
         grow_speed: float = 0.8
@@ -33,19 +34,19 @@ def simulate_week(plant: Plant) -> None:
 
 
 def main():
-    rosa = Plant("Rosa", 25.0, 30)
+    rosa = Plant("Rosa", 25, 30)
     print("Created: ", end="")
     rosa.show()
-    oak = Plant("Oak", 200.0, 365)
+    oak = Plant("Oak", 200, 365)
     print("Created: ", end="")
     oak.show()
-    cactus = Plant("Cactus", 5.0, 90)
+    cactus = Plant("Cactus", 5, 90)
     print("Created: ", end="")
     cactus.show()
-    sunflower = Plant("Sunflower", 80.0, 45)
+    sunflower = Plant("Sunflower", 80, 45)
     print("Created: ", end="")
     sunflower.show()
-    fern = Plant("Fern", 15.0, 120)
+    fern = Plant("Fern", 15, 120)
     print("Created: ", end="")
     fern.show()
 

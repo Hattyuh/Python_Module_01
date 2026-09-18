@@ -1,13 +1,14 @@
 class Plant():
     def __init__(self, name: str, _height: float, _age_in_days: int):
-        self.name = name
+        self.name = name.capitalize()
         self._height = _height
         self._age_in_days = _age_in_days
         self.grow_speed = self.get_grow_speed()
         self.growth: float = 0
 
     def show(self) -> None:
-        print(f"{self.name}: {self._height} cm, {self._age_in_days} days old")
+        print(f"{self.name}: {self._height:.1f}cm, \
+        {self._age_in_days} days old")
 
     def get_grow_speed(self) -> float:
         grow_speed: float = 0.8
@@ -34,7 +35,7 @@ class Plant():
             print("Height update rejected")
         else:
             self._height = new_height
-            print(f"{self.name}: Height updated: {new_height}")
+            print(f"{self.name}: Height updated: {new_height:.1f}cm")
 
     def set_age(self, new_age: int) -> None:
         if new_age < 0:
@@ -42,7 +43,7 @@ class Plant():
             print("Age update rejected")
         else:
             self._age_in_days = new_age
-            print(f"{self.name}: Age updated: {new_age}")
+            print(f"{self.name}: Age updated: {new_age} days")
 
 
 def simulate_week(plant: Plant):
